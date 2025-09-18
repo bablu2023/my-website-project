@@ -1,43 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 
+// The 'pages' object is re-themed for a workshop.
 const pages = {
   home: {
-    title: "Personalized Innovation with designsimx",
-    subtitle: "Learn from Expert Designers Anytime, Anywhere",
-    content: "designsimxinnovation offers cutting-edge virtual and in-person tutoring in design, technology, and more, tailored to your needs.",
-    cta: "Explore Our Services",
-    image: "https://placehold.co/600x400/005566/ff6f61?text=Innovation",
+    title: "Mastering Design: A Full-Day Workshop",
+    subtitle: "Unlock Your Creative Potential with Hands-On Sessions",
+    content: "Join us for an immersive one-day workshop designed to elevate your design skills. Our expert-led sessions cover everything from foundational principles to advanced techniques, perfect for designers of all levels.",
+    cta: "Register Now",
+    image: "https://placehold.co/600x400/005566/ff6f61?text=Design+Workshop",
     stats: [
-      { count: "1403", label: "Projects" },
-      { count: "327", label: "Clients" },
-      { count: "120", label: "Experts" },
+      { count: "10+", label: "Expert Speakers" },
+      { count: "8", label: "Interactive Sessions" },
+      { count: "350+", label: "Attendees" },
     ]
   },
-  about: {
-    title: "About designsimxinnovation",
-    content: "designsimxinnovation is a team of experienced creators with decades of expertise in the design industry. Our team of specialists offers vast experience across various design and technology fields.",
-    quotes: [
-      "“Design is not just what it looks like and feels like. Design is how it works.” - Steve Jobs",
-      "“Simplicity is the ultimate sophistication.” - Leonardo da Vinci",
-    ],
-    image: "https://placehold.co/600x400/005566/ff6f61?text=About+designsimxinnovation"
-  },
-  services: {
-    title: "Our Services",
-    content: "We offer a comprehensive suite of services to meet all your digital needs.",
+  agenda: {
+    title: "Workshop Agenda",
+    content: "A detailed breakdown of the day's events, designed to provide a comprehensive learning experience.",
     items: [
-      { title: "Web Design", desc: "Stunning, user-friendly websites tailored to your brand identity and goals." },
-      { title: "Web Development", desc: "Robust and scalable solutions for applications of all sizes." },
-      { title: "Digital Marketing", desc: "Strategic campaigns to increase your online visibility and reach your target audience." },
-      { title: "E-commerce Solutions", desc: "Secure, scalable, and easy-to-manage online stores that drive sales." },
-      { title: "Content Creation", desc: "Engaging content to tell your brand's story and connect with your audience." },
-      { title: "SEO Optimization", desc: "Improve your search engine rankings and attract more organic traffic." },
+      { time: "9:00 AM - 9:30 AM", title: "Registration & Welcome", desc: "Check-in and grab your welcome kit. Kick off the day with a brief introduction." },
+      { time: "9:30 AM - 11:00 AM", title: "Keynote: The Future of UI/UX", desc: "A visionary talk on upcoming trends in user interface and experience design." },
+      { time: "11:00 AM - 11:15 AM", title: "Coffee Break", desc: "Network with fellow attendees and speakers." },
+      { time: "11:15 AM - 1:00 PM", title: "Hands-on: Prototyping in Figma", desc: "Learn to build interactive prototypes with a step-by-step guided session." },
+      { time: "1:00 PM - 2:00 PM", title: "Lunch Break", desc: "A catered lunch is provided. Enjoy the food and network!" },
+      { time: "2:00 PM - 3:30 PM", title: "Workshop: Building Design Systems", desc: "A practical deep dive into creating scalable and reusable design systems." },
+      { time: "3:30 PM - 3:45 PM", title: "Afternoon Break", desc: "Quick break before the final sessions." },
+      { time: "3:45 PM - 5:00 PM", title: "Panel Discussion: Design Careers", desc: "Q&A with industry leaders on navigating your professional journey." },
+      { time: "5:00 PM - 5:30 PM", title: "Closing Remarks & Networking", desc: "Recap the day's highlights and enjoy a final networking opportunity." },
     ]
+  },
+  speakers: {
+    title: "Meet Our Speakers",
+    content: "Learn from the best in the industry.",
+    quotes: [
+      "“Design is intelligence made visible.” - Alina Wheeler",
+      "“Good design is honest.” - Dieter Rams",
+    ],
+    image: "https://placehold.co/600x400/005566/ff6f61?text=Workshop+Speakers"
   },
   contact: {
-    title: "Contact Us",
-    content: "We would love to hear from you. Send us a message and we'll get back to you as soon as possible.",
+    title: "Get in Touch",
+    content: "Have a question about the workshop? We're here to help.",
   }
 };
 
@@ -48,7 +52,8 @@ const Header = ({ onNavClick, activePage }) => {
     <header className="bg-gradient-to-r from-teal-700 to-teal-800 text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center py-4 px-4 md:px-8">
         <div className="flex items-center justify-between w-full md:w-auto">
-          <img src="https://placehold.co/150x40/005566/ff6f61?text=designsimx" alt="designsimxinnovation Logo" className="h-10 transition-transform duration-300 hover:scale-110 cursor-pointer" onClick={() => onNavClick('home')} />
+          {/* Logo updated for the workshop theme */}
+          <img src="https://placehold.co/150x40/005566/ff6f61?text=Design+Workshop" alt="Workshop Logo" className="h-10 transition-transform duration-300 hover:scale-110 cursor-pointer" onClick={() => onNavClick('home')} />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-white rounded-lg p-2"
@@ -86,23 +91,23 @@ const Footer = () => (
   <footer className="bg-gradient-to-r from-teal-900 to-teal-950 text-gray-300 py-10 px-4 md:px-8 mt-auto">
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
-        <h4 className="text-coral-400 font-bold text-xl mb-4">Services</h4>
+        <h4 className="text-coral-400 font-bold text-xl mb-4">Workshop Info</h4>
         <ul>
-          <li><a href="#" className="hover:text-coral-400 transition-colors">Tutoring</a></li>
-          <li><a href="#" className="hover:text-coral-400 transition-colors">Assessments</a></li>
-          <li><a href="#" className="hover:text-coral-400 transition-colors">Scoring</a></li>
+          <li><a href="#" className="hover:text-coral-400 transition-colors">Agenda</a></li>
+          <li><a href="#" className="hover:text-coral-400 transition-colors">Speakers</a></li>
+          <li><a href="#" className="hover:text-coral-400 transition-colors">Venue</a></li>
         </ul>
       </div>
       <div>
         <h4 className="text-coral-400 font-bold text-xl mb-4">Quick Links</h4>
         <ul>
           <li><a href="#" className="hover:text-coral-400 transition-colors">Home</a></li>
-          <li><a href="#" className="hover:text-coral-400 transition-colors">About Us</a></li>
+          <li><a href="#" className="hover:text-coral-400 transition-colors">Register</a></li>
           <li><a href="#" className="hover:text-coral-400 transition-colors">Contact Us</a></li>
         </ul>
       </div>
       <div>
-        <h4 className="text-coral-400 font-bold text-xl mb-4">Contact Us</h4>
+        <h4 className="text-coral-400 font-bold text-xl mb-4">Connect with Us</h4>
         <ul className="space-y-2">
           <li className="flex items-center space-x-2"><i className="fas fa-phone-alt"></i><span>+91-11-66509601</span></li>
           <li className="flex items-center space-x-2"><i className="fas fa-envelope"></i><span>info@designsimxinnovation.com</span></li>
@@ -111,7 +116,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-      Copyright © 2025 designsimxinnovation. All Rights Reserved.
+      Copyright © 2025 Design Workshop. All Rights Reserved.
     </div>
   </footer>
 );
@@ -120,7 +125,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
-    document.title = "designsimxinnovation | " + (currentPage.charAt(0).toUpperCase() + currentPage.slice(1));
+    document.title = "Design Workshop | " + (currentPage.charAt(0).toUpperCase() + currentPage.slice(1));
   }, [currentPage]);
 
   const renderPage = () => {
@@ -156,7 +161,7 @@ const App = () => {
             </div>
           </div>
         );
-      case 'about':
+      case 'speakers': // Renamed from 'about'
         return (
           <div className="bg-white min-h-screen py-16">
             <div className="container mx-auto p-4 md:p-8">
@@ -170,18 +175,18 @@ const App = () => {
                   <p className="text-lg text-gray-700 mb-6">{pageData.content}</p>
                   <div className="italic text-gray-500 space-y-4">
                     {pageData.quotes.map((quote, i) => (
-                      <p key={i}>"{quote}"</p>
+                      <p key={i}>{quote}</p>
                     ))}
                   </div>
                   <button className="mt-8 bg-coral-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-coral-600 transition-all duration-300 transform hover:scale-105">
-                    Read More
+                    View Speaker Bios
                   </button>
                 </div>
               </div>
             </div>
           </div>
         );
-      case 'services':
+      case 'agenda': // Renamed from 'services'
         return (
           <div className="bg-gray-50 min-h-screen py-16">
             <div className="container mx-auto p-4 md:p-8">
@@ -190,9 +195,10 @@ const App = () => {
                 <div className="w-16 h-1 bg-coral-500 rounded mb-6 mx-auto"></div>
                 <p className="text-lg text-gray-700 max-w-2xl mx-auto">{pageData.content}</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
                 {pageData.items.map((item, i) => (
                   <div key={i} className="bg-white rounded-xl p-8 shadow-md transition-all duration-300 hover:shadow-xl transform hover:-translate-y-2 animate-fade-in-up" style={{ animationDelay: `${i * 100}ms` }}>
+                    <p className="text-sm text-coral-500 font-semibold mb-1">{item.time}</p>
                     <h3 className="text-xl font-bold text-teal-700 mb-2">{item.title}</h3>
                     <p className="text-gray-600">{item.desc}</p>
                   </div>
